@@ -1,0 +1,14 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Microsoft.AspNetCore.Mvc;
+global using System.ComponentModel;
+global using Games_Zone.Services;
+global using Games_Zone.Models;
+global using Games_Zone.ViewModels;
+global using Games_Zone.Data;
+global using Games_Zone.Settings;
+global using Games_Zone.Attributes;

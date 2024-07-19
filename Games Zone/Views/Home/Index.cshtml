@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Game>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2 class="mt-2">@ViewBag.Message</h2>
+
+@if (Model.Any())
+{
+
+    <div class="row mt-5 mx-auto position-relative" style="width :80%">
+        @foreach (var game in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-5">
+                <a class="card border-success rounded-3 overflow-hidden mb-3 text-decoration-none" asp-controller="Games" asp-action="Details" asp-route-id="@game.Id">
+                    <div class="card-body position-relative" style="background-image: url(@($"assets/images/games/{game.Cover}")); background-size:cover; background-position:center; height:500px">
+                        <div class="d-flex align-items-end justify-content-between">
+                            <span class="badge bg-success text-dark fs-4">@game.Category.Name</span>
+                            
+                        </div>
+                    </div>
+                    <div @* style="height:15%" *@ class="card-footer d-flex justify-content-between align-items-center text-muted">
+                        <h5 class="w-50">@game.Name</h5>
+                        <div>
+                            @foreach (var gameDevice in game.Devices)
+                            {
+                                <i class="@gameDevice.Device.Icon fs-4 pe-1"></i>
+                            }
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+        
+    </div>
+}
+else
+{
+    <div class="alert alert-warning mt-2">
+        <h4 class="alert-heading">No Games!</h4>
+        <p class="mb-0">There are no games to show <a href="#" class="alert-link"></a>.</p>
+    </div>
+}
+<div>
+    <footer id="Footer" class="position-absolute fixed-bottom d-flex justify-content-center w-100 mt-5" style="background-color:#060c21;">
+        <div class="container d-flex justify-content-center text-center mt-2" style="background-color:#060c21;">
+            <div class="row pt-2">
+                <div class="col-md-4 offset-1">
+                    <h5>Mohamed Tarek Abd-Elhameed</h5>
+                    <h6 class="mt-2">01017093743</h6>
+                </div>
+                <div class="col-md-4 offset-2">
+                    <h4>Games Zone</h4>
+                </div>
+            </div>
+            <div class="w-50">
+                <p>&copy; Copyrights go to Souldeer0020 @DateTime.Now</p>
+                <div class="d-flex justify-content-center w-100">
+                    <a href="https://www.facebook.com/profile.php?id=100011666836078&mibextid=LQQJ4d" target="_blank"><i class="bi bi-facebook me-2">  </i></a>
+                    <a href="http://linkedin.com/in/mohamed-tarek-7430b8276" target="_blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+                <p>If you have any suggested games <a class="text-decoration-none text-info" asp-controller="client" asp-action="Create">Click here!</a></p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
